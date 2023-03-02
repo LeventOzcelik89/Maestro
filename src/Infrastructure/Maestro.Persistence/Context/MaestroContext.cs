@@ -16,15 +16,25 @@ namespace Maestro.Persistence.Context
         public MaestroContext(DbContextOptions dbContextOptions) : base(dbContextOptions) { }
 
         public DbSet<SH_User> SH_User { get; set; }
+        public DbSet<UT_City> UT_City { get; set; }
+        public DbSet<UT_Town> UT_Town { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
-            builder
-                .Entity<SH_User>()
-                .HasBaseType<BaseEntity>();
+            //  builder.Entity<BaseEntity>().Property(a => a.Id).HasDefaultValueSql("(newsequentialid())");
 
-            builder.Entity<SH_User>().Property(a => a.FirstName).HasColumnName("aaaaa");
+            builder.Entity<SH_User>().UseTpcMappingStrategy();
+            builder.Entity<UT_City>().UseTpcMappingStrategy();
+            builder.Entity<UT_Town>().UseTpcMappingStrategy().HasOne(a => a.UT_City).WithMany(a => a.UT_Towns).HasForeignKey(a => a.CityId).OnDelete(DeleteBehavior.NoAction);
+
+
+            //builder
+            //    .Entity<SH_User>()
+            //    .HasBaseType<BaseEntity>();
+
+            //builder.Entity<SH_User>().Property(a => a.FirstName).HasColumnName("aaaaa");
 
 
         }

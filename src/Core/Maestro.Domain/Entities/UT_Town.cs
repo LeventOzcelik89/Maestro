@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Maestro.Domain.Entities
 {
-    public class SH_User : BaseEntity
+    public class UT_Town : BaseEntity
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        //[ForeignKey("UT_City")]
+        public Guid CityId { get; set; }
+        public virtual UT_City UT_City { get; set; }
     }
 }

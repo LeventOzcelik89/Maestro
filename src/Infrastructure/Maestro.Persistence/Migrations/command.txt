@@ -1,2 +1,2 @@
-﻿D:\Projects\Maestro\Maestro\src\Infrastructure\Maestro.Persistence> 
+﻿D:\Projects\Maestro\Maestro\src\Infrastructure\Maestro.Persistence 
 dotnet-ef migrations add M1

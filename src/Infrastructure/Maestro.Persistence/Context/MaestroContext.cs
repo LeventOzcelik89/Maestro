@@ -25,9 +25,10 @@ namespace Maestro.Persistence.Context
 
             //  builder.Entity<BaseEntity>().Property(a => a.Id).HasDefaultValueSql("(newsequentialid())");
 
-            builder.Entity<SH_User>().UseTpcMappingStrategy();
-            builder.Entity<UT_City>().UseTpcMappingStrategy();
-            builder.Entity<UT_Town>().UseTpcMappingStrategy().HasOne(a => a.UT_City).WithMany(a => a.UT_Towns).HasForeignKey(a => a.CityId).OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<SH_User>().UseTpcMappingStrategy().Property(a => a.Id).HasDefaultValueSql("(newsequentialid())");
+            builder.Entity<UT_City>().UseTpcMappingStrategy().Property(a => a.Id).HasDefaultValueSql("(newsequentialid())");
+            builder.Entity<UT_Town>().UseTpcMappingStrategy().Property(a => a.Id).HasDefaultValueSql("(newsequentialid())");
+            builder.Entity<UT_Town>().HasOne(a => a.UT_City).WithMany(a => a.UT_Towns).HasForeignKey(a => a.CityId).OnDelete(DeleteBehavior.NoAction);
 
 
             //builder

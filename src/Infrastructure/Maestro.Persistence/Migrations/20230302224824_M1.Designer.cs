@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maestro.Persistence.Migrations
 {
     [DbContext(typeof(MaestroContext))]
-    [Migration("20230302223517_M1")]
+    [Migration("20230302224824_M1")]
     partial class M1
     {
         /// <inheritdoc />

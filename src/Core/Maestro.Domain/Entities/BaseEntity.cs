@@ -14,7 +14,7 @@ namespace Maestro.Domain.Entities
     {
         [Key]
         [Column(Order = 0)]
-        [DefaultValue("NEWSEQUENTIALID()")]
+        [DefaultValue("(newsequentialid())")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 

@@ -9,8 +9,9 @@ namespace Maestro.Domain.Entities
 {
     public class UT_Town : BaseEntity
     {
-        //[ForeignKey("UT_City")]
+        
         public Guid CityId { get; set; }
+        [ForeignKey("CityId")]
         public virtual UT_City UT_City { get; set; }
     }
 }

@@ -27,7 +27,8 @@ namespace Maestro.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(0);
+                        .HasColumnOrder(0)
+                        .HasDefaultValueSql("(newsequentialid())");
 
                     b.Property<DateTime?>("Changed")
                         .HasColumnType("DATETIME")
@@ -65,7 +66,8 @@ namespace Maestro.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(0);
+                        .HasColumnOrder(0)
+                        .HasDefaultValueSql("(newsequentialid())");
 
                     b.Property<DateTime?>("Changed")
                         .HasColumnType("DATETIME")
@@ -90,8 +92,6 @@ namespace Maestro.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UT_City");
-
-                    b.UseTpcMappingStrategy();
                 });
 
             modelBuilder.Entity("Maestro.Domain.Entities.UT_Town", b =>
@@ -99,7 +99,8 @@ namespace Maestro.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(0);
+                        .HasColumnOrder(0)
+                        .HasDefaultValueSql("(newsequentialid())");
 
                     b.Property<DateTime?>("Changed")
                         .HasColumnType("DATETIME")
@@ -125,8 +126,6 @@ namespace Maestro.Persistence.Migrations
                     b.HasIndex("CityId");
 
                     b.ToTable("UT_Town");
-
-                    b.UseTpcMappingStrategy();
                 });
 
             modelBuilder.Entity("Maestro.Domain.Entities.UT_Town", b =>

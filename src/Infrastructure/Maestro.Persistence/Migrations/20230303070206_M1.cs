@@ -15,7 +15,7 @@ namespace Maestro.Persistence.Migrations
                 name: "SH_User",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newsequentialid())"),
                     Created = table.Column<DateTime>(type: "DATETIME", nullable: true),
                     Changed = table.Column<DateTime>(type: "DATETIME", nullable: true),
                     CreatedId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -32,7 +32,7 @@ namespace Maestro.Persistence.Migrations
                 name: "UT_City",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newsequentialid())"),
                     Created = table.Column<DateTime>(type: "DATETIME", nullable: true),
                     Changed = table.Column<DateTime>(type: "DATETIME", nullable: true),
                     CreatedId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
@@ -48,7 +48,7 @@ namespace Maestro.Persistence.Migrations
                 name: "UT_Town",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "(newsequentialid())"),
                     Created = table.Column<DateTime>(type: "DATETIME", nullable: true),
                     Changed = table.Column<DateTime>(type: "DATETIME", nullable: true),
                     CreatedId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),

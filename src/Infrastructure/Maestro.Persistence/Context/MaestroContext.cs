@@ -1,12 +1,18 @@
 ﻿using Maestro.Application.Interfaces.Context;
 using Maestro.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Maestro.Persistence.Context
 {
@@ -19,26 +25,38 @@ namespace Maestro.Persistence.Context
         public DbSet<UT_City> UT_City { get; set; }
         public DbSet<UT_Town> UT_Town { get; set; }
 
-
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            //  builder.Entity<BaseEntity>().Property(a => a.Id).HasDefaultValueSql("(newsequentialid())");
-
-            builder.Entity<SH_User>().UseTpcMappingStrategy().Property(a => a.Id).HasDefaultValueSql("(newsequentialid())");
-            builder.Entity<UT_City>().UseTpcMappingStrategy().Property(a => a.Id).HasDefaultValueSql("(newsequentialid())");
-            builder.Entity<UT_Town>().UseTpcMappingStrategy().Property(a => a.Id).HasDefaultValueSql("(newsequentialid())");
-            builder.Entity<UT_Town>().HasOne(a => a.UT_City).WithMany(a => a.UT_Towns).HasForeignKey(a => a.CityId).OnDelete(DeleteBehavior.NoAction);
-
-
-            //builder
-            //    .Entity<SH_User>()
-            //    .HasBaseType<BaseEntity>();
-
-            //builder.Entity<SH_User>().Property(a => a.FirstName).HasColumnName("aaaaa");
+            modelBuilder.Entity<SH_User>(a =>
+            {
+                a.UseTpcMappingStrategy();
+                a.Property(p => p.Id).HasDefaultValueSql("(newsequentialid())");
+            });
 
 
+            modelBuilder.Entity<UT_City>(a =>
+            {
+                a.UseTpcMappingStrategy();
+                a.Property(p => p.Id).HasDefaultValueSql("(newsequentialid())");
+            });
+
+
+            modelBuilder.Entity<UT_Town>(a =>
+            {
+                a.UseTpcMappingStrategy();
+                a.Property(p => p.Id).HasDefaultValueSql("(newsequentialid())");
+                a.HasOne(p => p.UT_City).WithMany(p => p.UT_Towns).HasForeignKey(p => p.CityId).OnDelete(DeleteBehavior.NoAction);
+            });
+
+            SH_User.AddAsync(new SH_User { FirstName = "FN", LastName = "LN" });
+            SaveChangesAsync();
+
+            var rs = SH_User.AllAsync(a => true);
+
+            var dbg = "";
         }
+
     }
 
 }

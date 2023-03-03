@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Maestro.Application\Maestro.Application.csproj" />
+  </ItemGroup>
+
 </Project>

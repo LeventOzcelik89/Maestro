@@ -1,4 +1,6 @@
-﻿using Maestro.Persistence.Context;
+﻿using Maestro.Application.Repository.User;
+using Maestro.Persistence.Context;
+using Maestro.Persistence.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +22,9 @@ namespace Maestro.Persistence
                 a.UseSqlServer(configuration?.GetConnectionString("SQLConnection"), sqlOption => sqlOption.UseNetTopologySuite());
             });
 
-            
+            serviceCollection.AddTransient<IUserReadRepository, UserReadRepository>();
+            serviceCollection.AddTransient<IUserWriteRepository, UserWriteRepository>();
+
         }
     }
 }

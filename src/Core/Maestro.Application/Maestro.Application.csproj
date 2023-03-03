@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Queries\" />
+    <Folder Include="Interfaces\UnitOfWork\" />
   </ItemGroup>
 
 </Project>

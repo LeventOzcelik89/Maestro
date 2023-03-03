@@ -26,4 +26,8 @@
     <ProjectReference Include="..\..\Core\Maestro.Domain\Maestro.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UnitOfWork\" />
+  </ItemGroup>
+
 </Project>

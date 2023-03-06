@@ -1,20 +1,15 @@
-﻿using Maestro.Application.Repository.Data;
-using Maestro.Application.Repository.Exceptions;
-using Maestro.Application.Repository.Interfaces;
-using Maestro.Application.Repository.Linq;
-using Maestro.Application.Repository.MultiTenancy;
-using Maestro.Application.Repository.Threading;
-using Maestro.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
+﻿using JetBrains.Annotations;
+using Maestro.Framework.Data;
+using Maestro.Framework.DependencyInjection;
+using Maestro.Framework.Entities;
+using Maestro.Framework.Interfaces;
+using Maestro.Framework.Linq;
+using Maestro.Framework.MultiTenancy;
+using Maestro.Framework.Threading;
+using Maestro.Framework.Uow;
 using System.Linq.Expressions;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Maestro.Application.Repository.RepositoryBase
+namespace Maestro.Framework.Repositories
 {
     public abstract class BasicRepositoryBase<TEntity> :
         IBasicRepository<TEntity>,
@@ -151,6 +146,4 @@ namespace Maestro.Application.Repository.RepositoryBase
             }
         }
     }
-
-    
 }

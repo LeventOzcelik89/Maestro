@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Infrastructure", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Application", "src\Core\Maestro.Application\Maestro.Application.csproj", "{EF38CBF2-1378-4E69-A5FE-5402CEA8FE0B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{15EC0263-79EB-4765-B09A-B8B713F7D907}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Framework", "src\Framework\Maestro.Framework\Maestro.Framework.csproj", "{937E779B-A4CB-40B7-8ECE-E6A061B6804A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,10 @@ Global
 		{EF38CBF2-1378-4E69-A5FE-5402CEA8FE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF38CBF2-1378-4E69-A5FE-5402CEA8FE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF38CBF2-1378-4E69-A5FE-5402CEA8FE0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{937E779B-A4CB-40B7-8ECE-E6A061B6804A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{937E779B-A4CB-40B7-8ECE-E6A061B6804A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{937E779B-A4CB-40B7-8ECE-E6A061B6804A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{937E779B-A4CB-40B7-8ECE-E6A061B6804A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +68,8 @@ Global
 		{68AFA71C-E4D4-49C6-AFEC-E8670E58CCAB} = {9BF5D7A6-DF9B-449E-B466-2ED5B54E7D3D}
 		{FDD009C6-2BF1-44B0-A90C-6C10327A6E43} = {A43C5CA4-9EDB-45F5-BD45-89E6DD9D45C7}
 		{EF38CBF2-1378-4E69-A5FE-5402CEA8FE0B} = {2C6DDE8A-48C1-4D7E-96F6-999BF5551E6C}
+		{15EC0263-79EB-4765-B09A-B8B713F7D907} = {95F4F72D-9AAB-46C6-9010-16A897DF3422}
+		{937E779B-A4CB-40B7-8ECE-E6A061B6804A} = {15EC0263-79EB-4765-B09A-B8B713F7D907}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {49591D98-49FC-4F40-A93C-7ED32C826154}

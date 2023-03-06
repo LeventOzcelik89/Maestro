@@ -1,5 +1,4 @@
-﻿using Maestro.Application.Repository;
-using Maestro.Domain.Entities;
+﻿using Maestro.Domain.Entities;
 using Maestro.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;

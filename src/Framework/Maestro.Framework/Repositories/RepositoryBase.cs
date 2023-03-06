@@ -1,4 +1,5 @@
-﻿using Maestro.Domain.Interfaces;
+﻿using Maestro.Application.Uow;
+using Maestro.Domain.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maestro.Application.Repository.RepositoryBase
+namespace Maestro.Framework.Repositories
 {
     public abstract class RepositoryBase<TEntity> : BasicRepositoryBase<TEntity>, IRepository<TEntity>, IUnitOfWorkManagerAccessor
         where TEntity : class, IEntity

@@ -1,4 +1,7 @@
-﻿using Maestro.Domain.Interfaces;
+﻿using Maestro.Application.Repository.Exceptions;
+using Maestro.Application.Repository.MultiTenancy;
+using Maestro.Domain.Interfaces;
+using Maestro.Domain.Repositories.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -9,8 +12,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maestro.Application.Repository.EfCoreRepository
+namespace Maestro.Application.Repositories.EntityFrameworkCore
 {
+
     public class EfCoreRepository<TDbContext, TEntity> : RepositoryBase<TEntity>, IEfCoreRepository<TEntity>, IAsyncEnumerable<TEntity>
         where TDbContext : IEfCoreDbContext
         where TEntity : class, IEntity
@@ -403,4 +407,58 @@ namespace Maestro.Application.Repository.EfCoreRepository
             );
         }
     }
+
+    public class EfCoreRepository<TDbContext, TEntity, TKey> : EfCoreRepository<TDbContext, TEntity>,
+        IEfCoreRepository<TEntity, TKey>,
+        ISupportsExplicitLoading<TEntity, TKey>
+
+        where TDbContext : IEfCoreDbContext
+        where TEntity : class, IEntity<TKey>
+    {
+        public EfCoreRepository(IDbContextProvider<TDbContext> dbContextProvider)
+            : base(dbContextProvider)
+        {
+
+        }
+
+        public virtual async Task<TEntity> GetAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default)
+        {
+            var entity = await FindAsync(id, includeDetails, GetCancellationToken(cancellationToken));
+
+            if (entity == null)
+            {
+                throw new EntityNotFoundException(typeof(TEntity), id);
+            }
+
+            return entity;
+        }
+
+        public virtual async Task<TEntity> FindAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default)
+        {
+            return includeDetails
+                ? await (await WithDetailsAsync()).OrderBy(e => e.Id).FirstOrDefaultAsync(e => e.Id.Equals(id), GetCancellationToken(cancellationToken))
+                : await (await GetDbSetAsync()).FindAsync(new object[] { id }, GetCancellationToken(cancellationToken));
+        }
+
+        public virtual async Task DeleteAsync(TKey id, bool autoSave = false, CancellationToken cancellationToken = default)
+        {
+            var entity = await FindAsync(id, cancellationToken: cancellationToken);
+            if (entity == null)
+            {
+                return;
+            }
+
+            await DeleteAsync(entity, autoSave, cancellationToken);
+        }
+
+        public virtual async Task DeleteManyAsync(IEnumerable<TKey> ids, bool autoSave = false, CancellationToken cancellationToken = default)
+        {
+            cancellationToken = GetCancellationToken(cancellationToken);
+
+            var entities = await (await GetDbSetAsync()).Where(x => ids.Contains(x.Id)).ToListAsync(cancellationToken);
+
+            await DeleteManyAsync(entities, autoSave, cancellationToken);
+        }
+    }
+
 }

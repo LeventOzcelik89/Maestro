@@ -1,14 +1,17 @@
-﻿using System;
+﻿using Maestro.Framework.Interfaces;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Maestro.Domain.Interfaces;
 
-namespace Maestro.Application.Repository
+namespace Maestro.Framework.Repositories
 {
+    public interface IRepository
+    {
+    }
 
     public interface IRepository<TEntity> : IReadOnlyRepository<TEntity>, IQueryable<TEntity>, IEnumerable<TEntity>, IEnumerable, IQueryable, IReadOnlyBasicRepository<TEntity>, IRepository, IBasicRepository<TEntity> where TEntity : class, IEntity
     {
@@ -71,11 +74,4 @@ namespace Maestro.Application.Repository
         Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = false, CancellationToken cancellationToken = default(CancellationToken));
     }
 
-    public partial interface IBasicRepository<TEntity, TKey> : IBasicRepository<TEntity>, IReadOnlyBasicRepository<TEntity>, IRepository, IReadOnlyBasicRepository<TEntity, TKey> where TEntity : class, IEntity<TKey>
-    {
-
-        Task DeleteAsync(TKey id, bool autoSave = false, CancellationToken cancellationToken = default(CancellationToken));
-        Task DeleteManyAsync(IEnumerable<TKey> ids, bool autoSave = false, CancellationToken cancellationToken = default(CancellationToken));
-
-    }
 }

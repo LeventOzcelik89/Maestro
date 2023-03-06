@@ -27,7 +27,9 @@
   <ItemGroup>
     <Folder Include="Features\Queries\" />
     <Folder Include="Interfaces\UnitOfWork\" />
+    <Folder Include="Repository\EfCoreRepository\" />
     <Folder Include="Repository\NewFolder\" />
+    <Folder Include="Repository\RepositoryBase\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using Maestro.Domain.Entities;
+﻿using Maestro.Application.Repositories;
+using Maestro.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

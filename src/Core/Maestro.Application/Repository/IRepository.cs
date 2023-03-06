@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Maestro.Application.Repository
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IRepository
     {
-        DbSet<T> Table { get; }
+        //  DbSet<T> Table { get; }
     }
 }

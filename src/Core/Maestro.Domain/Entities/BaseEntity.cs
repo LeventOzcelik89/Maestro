@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maestro.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Maestro.Domain.Entities
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity : IEntity
     {
         [Key]
         [Column(Order = 0)]

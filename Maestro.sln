@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Persistence", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.API", "src\Presentation\Maestro.API\Maestro.API.csproj", "{68AFA71C-E4D4-49C6-AFEC-E8670E58CCAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Infrastructure", "src\Infrastructure\Maestro.Infrastructure\Maestro.Infrastructure.csproj", "{FDD009C6-2BF1-44B0-A90C-6C10327A6E43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Infrastructure", "src\Infrastructure\Maestro.Infrastructure\Maestro.Infrastructure.csproj", "{FDD009C6-2BF1-44B0-A90C-6C10327A6E43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.Application", "src\Core\Maestro.Application\Maestro.Application.csproj", "{EF38CBF2-1378-4E69-A5FE-5402CEA8FE0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maestro.Application", "src\Core\Maestro.Application\Maestro.Application.csproj", "{EF38CBF2-1378-4E69-A5FE-5402CEA8FE0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
